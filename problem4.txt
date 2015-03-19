@@ -1,0 +1,16 @@
+####
+# 4.1
+#####
+
+# use filter to find rows with 500 or more votes and rating above 8.0, then count
+count(filter(movies, votes > 499, rating > 8.0))
+
+#####
+# 4.2
+#####
+
+# first, use work from above to filter movies with 500 or more votes with rating above 8.0
+# second, sort that data by year in ascending order
+# third, select only the title and year columns
+# finally, select only the top 10 (10 oldest) movies
+top_n(select(arrange(filter(movies, votes > 499, rating > 8.0), year), title, year), 10, desc(year))

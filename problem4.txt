@@ -14,3 +14,13 @@ count(filter(movies, votes > 499, rating > 8.0))
 # third, select only the title and year columns
 # finally, select only the top 10 (10 oldest) movies
 top_n(select(arrange(filter(movies, votes > 499, rating > 8.0), year), title, year), 10, desc(year))
+
+#####
+# 4.3
+#####
+
+# begin by filtering to movies released after 1993 with 500 or more votes
+# then, arrange and group by year
+# finally, select only the movies with the minimum rating in its group (year)
+
+filter(group_by(arrange(filter(movies, year > 1993, votes > 499), year), year), rating == min(rating))
